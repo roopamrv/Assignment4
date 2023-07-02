@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Assignment03</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/styles.css" rel="stylesheet">
+</head>
+
+<body>
+<h3>Roopam Verma 7590</h3>
+
+<div class="container">
+	<h3>Upload SQL File </h3>
+    <form id="upload_form" action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" accept="uploaded_files/*" >
+      <input type="submit" class="btn btn-primary" value="Upload">
+   </form>
+   <br>
+    <br>
+    <h3>Create DB !!</h3>
+	<form action="./createDB" method="GET" enctype="multipart/form-data">
+	      <input type="submit" class="btn btn-primary" value="Create DB">
+    	</form>
+    <br>
+    <h3>Run Query1: Simple Select Query!! (Rerun for random select queries)</h3>
+    <br>
+    <button type="submit" class="btn btn-default" value="Query1"><a href="/query1">Query1</a></button>
+    <br>
+    <br>
+    <br>
+
+ 
+</div>
+
+<!-- <div class="container">
+    <form action = "/selectBQuery" method="POST" enctype="multipart/form-data">
+        
+            <label for="mag1">Enter min Magnitude: </label>
+            <input type="text" value="" id="mag1" name="mag1"><br><br>
+        
+            <label for="mag2">Enter max Magnitude: </label>
+            <input type="text" value="" id="mag2" name="mag2"><br><br>
+ 
+            <input type="checkbox" name="chart" value="ScatterPlot"> ScatterPlot
+            <input type="checkbox" name="chart" value="BarChart"> BarChart
+            <input type="checkbox" name="chart" value="PieChart"> PieChart
+
+            <br>
+            <br>
+            <button type="submit" value="Query2">Query2</button>
+            <br>
+            <br>
+            <br>
+
+</div> -->
+
+<div class="container">
+    <form action = "/querydemo" method="POST" enctype="multipart/form-data">
+        <h3>Run Query2: Time vs Latitude!!</h3>
+        <br>
+            <label for="time1">Time 1:</label>
+            <input type="text" name="time1" id="time1">
+            <br>
+            <label for="time2">Time 2:</label>
+            <input type="text" name="time2" id="time2">
+<!-- 
+            <br>
+            <input type="checkbox" name="attributes" value="latitude"> Latitude
+            <input type="checkbox" name="attributes" value="mag"> Magnitude
+            <input type="checkbox" name="attributes" value="place"> Place
+            <br> -->
+            <br>
+            <br>
+            <br>
+            <input type="checkbox" name="chart" value="ScatterPlot"> ScatterPlot
+            <input type="checkbox" name="chart" value="BarChart"> BarChart
+            <input type="checkbox" name="chart" value="PieChart"> PieChart
+            <br>
+            <br>
+            <input type="submit" class="btn btn-primary" value=" Query 3: Generate Chart">
+        </form>
+
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
