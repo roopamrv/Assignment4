@@ -13,9 +13,9 @@
         var chartData = JSON.parse('{{ chart_data | safe}}');
         var selectedAttributes = JSON.parse('{{ selected_attributes | tojson }}');
 
-
         console.log("Chart data: ",chartData)
         console.log("Selected Attributes: ", selectedAttributes)
+
         // Create the chart using D3.js based on the selected attributes
         // Here, I'm providing a basic example of a scatter plot
         var svgWidth = 800;
@@ -29,18 +29,6 @@
             .attr("width", svgWidth)
             .attr("height", svgHeight);
 
-        // Add your chart code here based on the selected attributes
-        // You can use D3.js or any other charting library to create the desired chart
-
-        // Create the chart using D3.js based on the chartData
-        // var svgWidth = 800;
-        // var svgHeight = 800;
-        // var margin = { top: 20, right: 20, bottom: 30, left: 40 };
-        // //var chartWidth = svgWidth - margin.left - margin.right;
-        // //var chartHeight = svgHeight - margin.top - margin.bottom;
-        // var chartWidth = 1000
-        // var chartHeight = 400
-
         var xScale = d3.scaleLinear()
             .domain(d3.extent(chartData, function(d) { return d.time; }))
             .range([margin.left, chartWidth]);
@@ -49,6 +37,7 @@
             .domain(d3.extent(chartData, function(d) { return d.latitude; }))
             .range([chartHeight, margin.top]);
 
+        // Draw scatterplot circles
         svg.selectAll("circle")
             .data(chartData)
             .enter()
@@ -57,6 +46,19 @@
             .attr("cy", function(d) { return yScale(d.latitude); })
             .attr("r", 5)
             .attr("fill", "steelblue");
+
+        // Create a line generator
+        var line = d3.line()
+            .x(function(d) { return xScale(d.time); })
+            .y(function(d) { return yScale(d.latitude); });
+
+        // Draw the line connecting the scatterplot points
+        svg.append("path")
+            .datum(chartData)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 2)
+            .attr("d", line);
 
         svg.append("g")
             .attr("transform", "translate(0," + chartHeight + ")")
